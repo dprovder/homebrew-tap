@@ -1,25 +1,25 @@
 class Kanstack < Formula
   desc "An unofficial kanban-style terminal UI for the GitButler CLI"
   homepage "https://github.com/dprovder/kanstack"
-  version "0.1.0"
+  version "0.0.2"
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/dprovder/kanstack/releases/download/v0.1.0/kanstack-aarch64-apple-darwin.tar.xz"
-      sha256 "7ff1e0d3886043ba2edf9992dc53c7c218b9f507b25de7578f0fa915f03726e0"
+      url "https://github.com/dprovder/kanstack/releases/download/v0.0.2/kanstack-aarch64-apple-darwin.tar.xz"
+      sha256 "d408777e3c40953ff47ee553dc660e39c7d7a7875aac9ee350e24267481198a1"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/dprovder/kanstack/releases/download/v0.1.0/kanstack-x86_64-apple-darwin.tar.xz"
-      sha256 "533b3e920a4b8814951c1698bfcc431e528027b961c71672d3708a6b4c93293c"
+      url "https://github.com/dprovder/kanstack/releases/download/v0.0.2/kanstack-x86_64-apple-darwin.tar.xz"
+      sha256 "c296c41cad965d5f594a4c6602c51853fdca30b94984ba8b9afef276e1832cc1"
     end
   end
   if OS.linux?
     if Hardware::CPU.arm?
-      url "https://github.com/dprovder/kanstack/releases/download/v0.1.0/kanstack-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "41e95b28f55cd03fb08a77c3c2d2ca10c0711bbfe6748d0f04b98c7272980278"
+      url "https://github.com/dprovder/kanstack/releases/download/v0.0.2/kanstack-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "23620e2af30746324a414602608764f97b0cf69e2589cee92facef4fdba14b2d"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/dprovder/kanstack/releases/download/v0.1.0/kanstack-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "c882bd247ad2b27fa4b68e051caba90c04b340e2b25760f6e7af56645a069ed3"
+      url "https://github.com/dprovder/kanstack/releases/download/v0.0.2/kanstack-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "92e891454131532817d07a4c8d38a35deb2759c1d529ddcf06a2bc702110f361"
     end
   end
   license "MIT"
@@ -47,10 +47,18 @@ class Kanstack < Formula
   end
 
   def install
-    bin.install "kanstack" if OS.mac? && Hardware::CPU.arm?
-    bin.install "kanstack" if OS.mac? && Hardware::CPU.intel?
-    bin.install "kanstack" if OS.linux? && Hardware::CPU.arm?
-    bin.install "kanstack" if OS.linux? && Hardware::CPU.intel?
+    if OS.mac? && Hardware::CPU.arm?
+      bin.install "kanstack"
+    end
+    if OS.mac? && Hardware::CPU.intel?
+      bin.install "kanstack"
+    end
+    if OS.linux? && Hardware::CPU.arm?
+      bin.install "kanstack"
+    end
+    if OS.linux? && Hardware::CPU.intel?
+      bin.install "kanstack"
+    end
 
     install_binary_aliases!
 
